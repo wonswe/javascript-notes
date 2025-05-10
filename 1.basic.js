@@ -21,7 +21,9 @@ class Fruit {
   };
 }
 
+// apple은 Fruit 클래스의 인스턴스이다.
 const apple = new Fruit('apple', '🍎');
+// orange는 Fruit 클래스의 인스턴스이다.
 const orange = new Fruit('orange', '🍊');
 
 console.log(apple);
@@ -30,3 +32,6 @@ console.log(`${apple.name} ${apple.emoji}`);
 console.log(`${orange.name} ${orange.emoji}`);
 apple.display();
 orange.display();
+
+// obj는 객체이고, 그 어떤 클래스의 인스턴스도 아니다.
+const obj = { name: 'juwon' };
