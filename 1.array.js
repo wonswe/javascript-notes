@@ -29,4 +29,4 @@ array = Array.from({
   length: 2,
 });
 
-console.log(array);
+console.log(array); // [ '안', '녕' ]
