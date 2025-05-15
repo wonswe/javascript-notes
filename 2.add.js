@@ -14,6 +14,7 @@ for (let i = 0; i < fruits.length; i++) {
 
 // const fruits = ['🍎', '🍊', '🍌', '🍏'];
 // 추가, 삭제 - 좋지 않은 방식 💩
+
 // fruits[6] = '🫐';
 console.log(fruits);
 // [ '🍎', '🍊', '🍌', '🍏', <2 empty items>, '🫐' ]
@@ -24,3 +25,4 @@ console.log(fruits);
 
 delete fruits[1];
 console.log(fruits);
+// [ '🍎', <1 empty item>, '🍌', '🍏', '🫐' ] 삭제 된 자리가 빈 자리로 남는다
