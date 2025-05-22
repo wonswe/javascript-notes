@@ -55,7 +55,7 @@ result = nums.map((item) => {
 
 console.log(result); // [ 1, 4, 3, 8, 5 ]
 
-// Flatmap
+// Flatmap 중첩된 배열을 쫘악 펴줌
 result = nums.map((item) => [1, 2]);
 console.log(result);
 // [ [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ] ]
