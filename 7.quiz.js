@@ -4,6 +4,7 @@
 // output: [ '🍌', '🥝', '🍇', '🥝' ]
 
 function replace(array, from, to) {
+  return array.map((item) => (item === from ? to : item));
   const replaced = Array.from(array);
   for (let i = 0; i < replaced.length; i++) {
     if (replaced[i] === from) {
@@ -14,7 +15,6 @@ function replace(array, from, to) {
 }
 
 const array = ['🍌', '🍓', '🍇', '🍓'];
-
 const result = replace(array, '🍓', '🫐');
 console.log(result);
 
@@ -25,7 +25,17 @@ console.log(result);
 // output: 2
 
 function count(array, item) {
-  let counter = 0;
+  return array.filter((value) => value === item).length; // 방법 1
+
+  return array.reduce((count, value) => {
+    // 방법 2
+    if (value === item) {
+      count++;
+    }
+    return count;
+  }, 0);
+
+  let counter = 0; // 방법 3
   for (let i = 0; i < array.length; i++) {
     if (array[i] === item) {
       counter++;
@@ -34,7 +44,7 @@ function count(array, item) {
   return counter;
 }
 
-console.log(count(['🍌', '🥝', '🍇', '🥝'], '🥝'));
+console.log(count(['🍌', '🥝', '🍇', '🥝'], '🥝')); // 2
 
 // 퀴즈3: 배열1, 배열2 두개의 배열을 전달받아,
 // 배열1 아이템중 배열2에 존재하는 아이템만 담고 있는 배열 반환
@@ -42,7 +52,9 @@ console.log(count(['🍌', '🥝', '🍇', '🥝'], '🥝'));
 // output: [ '🍌', '🍇' ]
 
 function match(input, search) {
-  const result = [];
+  return input.filter((item) => search.includes(item)); // 방법 1
+
+  const result = []; // 방법 2
   for (let i = 0; i < input.length; i++) {
     if (search.includes(input[i])) {
       result.push(input[i]);
@@ -54,12 +66,8 @@ function match(input, search) {
 console.log(match(['🍌', '🥝', '🍇'], ['🍌', '🍓', '🍇', '🍓']));
 
 // 퀴즈4: 5이상(보다 큰)의 숫자들의 평균
-const number = [3, 16, 5, 25, 4, 34, 21];
-let avg = number.reduce((sum, value) => {
-  if (value >= 5) {
-    sum += value;
-  }
-  return sum / number.lengt;
-}, 0);
-
-console.log(avg);
+const nums = [3, 16, 5, 25, 4, 34, 21];
+let avg = nums
+  .filter((num) => num > 5)
+  .reduce((avg, num, _, array) => avg + num / array.length, 0); // [ 16, 25, 34, 21 ]
+console.log(avg); // 24
