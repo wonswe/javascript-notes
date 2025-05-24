@@ -55,3 +55,28 @@ const obj = { 0: 1, 1: 2 };
 for (const item in obj) {
   console.log(item); // 0, 1 key를 출력
 }
+
+const iterator = array.values();
+
+// console.log(iterator.next());
+// { value: 1, done: false }
+console.log(iterator.next().value);
+// 1
+console.log(iterator.next().value);
+// 2
+console.log(iterator.next().value);
+// 3
+console.log(iterator.next().value);
+// undefined
+console.log(iterator.next().done);
+// true - 반복이 끝났다.
+
+// 반환된 이터레이터를 가지고 next()를 호출하면 계속 그 다음 값이 반환이 됨
+// next().value 를 이용해서 접근이 가능하다.
+
+const iteratorW = array.values();
+while (true) {
+  const item = iteratorW.next();
+  if (item.done) break;
+  console.log(item.value);
+} // 1, 2, 3
