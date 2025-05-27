@@ -35,4 +35,7 @@ console.log(Symbol.keyFor(key1));
 const obj = { [k1]: 'Hello', [Symbol('key')]: 1 };
 console.log(obj); // { [Symbol(key)]: 'Hello', [Symbol(key)]: 1 }
 console.log(obj[k1]); // Hello
-console.log(obj[Symbol('key')]);
+console.log(obj[Symbol('key')]); // undefined, 위에 심볼과 전혀 다른 심볼이기에 접근 불가
+
+// 문자열이 같아도 유니크한 키를 만들고 싶을 때 심볼을 이용,
+// 문자열에 대해서 동일한 심볼을 만들고 싶을 때 Symbol.for()이용.
