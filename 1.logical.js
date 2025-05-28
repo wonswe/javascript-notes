@@ -57,3 +57,5 @@ console.log(obj1);
 // { nam: '🐶', owner: '새로운주인!' } 주인이 없었기 때문에 (false) 뒤에 function 실행.
 console.log(obj2);
 // { name: '🐱', owner: '바뀐주인!' } 주인이 있었기 때문이 (true) 뒤에 function 실행 안됨.
+
+// null 또는 undefined인 경우를 확인할 때
