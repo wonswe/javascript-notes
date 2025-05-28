@@ -59,3 +59,30 @@ console.log(obj2);
 // { name: '🐱', owner: '바뀐주인!' } 주인이 있었기 때문이 (true) 뒤에 function 실행 안됨.
 
 // null 또는 undefined인 경우를 확인할 때
+// let item;
+// const price = item.price;
+// console.log(price);
+// TypeError: Cannot read properties of undefined (reading 'price')
+// item이 null 또는 undefined인 경우에 접근하게 되면 위처럼 에러가 발생한다.
+
+// 그래서 아래처럼 아이템이 true라면 item.price에 접근하여 price 변수에 할당하고
+// 아이템이 없다 (false)라면 undefined를 price 변수에 할당하는 방식이 더 좋다.
+let item;
+const price = item && item.price;
+console.log(price); // undefined
+
+// 기본값을 설정
+function print(message) {
+  const text = message || 'Hello';
+  console.log(text);
+}
+print(); // Hello - message 파라미터가 undefined이기 때문에 text 변수에는 'Hello'가 할당되고 출력된다.
+print('hellosie'); //  hellosie - message 파라미터에 입력값이 존재하기에 그대로 'hellosie'가 출력된다.
+
+// 만약 default parameter를 설정한다면
+
+function printDefault(message = 'Hi') {
+  console.log(message);
+}
+
+printDefault();
