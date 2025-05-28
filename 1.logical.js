@@ -28,7 +28,7 @@ console.log(result);
 
 // 활용예
 // 조건이 truthy일 때 && 무언가를 해야 할 경우
-// 조건이 falsey일 때 || 무언가를 해야 할 경우
+// 조건이 falsy일 때 || 무언가를 해야 할 경우
 
 function changeOwner(animal) {
   if (!animal.owner) {
@@ -79,10 +79,29 @@ function print(message) {
 print(); // Hello - message 파라미터가 undefined이기 때문에 text 변수에는 'Hello'가 할당되고 출력된다.
 print('hellosie'); //  hellosie - message 파라미터에 입력값이 존재하기에 그대로 'hellosie'가 출력된다.
 
-// 만약 default parameter를 설정한다면
+// 만약 default parameter를 설정한다면 전달값이 없거나 undefined인 경우에만 진행
 
 function printDefault(message = 'Hi') {
   console.log(message);
 }
 
-printDefault();
+printDefault(); // Hi - 설정해둔 default 값인 Hi가 출력된다.
+printDefault(undefined); // Hi - undefined 값이 출력된다.
+
+// null과 0은 undefined가 아니므로 디폴트값이 아닌 전달한 값이 그대로 출력된다.
+printDefault(null); // null
+printDefault(0); // 0
+
+// || 연산자는 값이 falsy일 때 설정(할당): 0, -0, null, undefined, ''
+function falsyTest(msg) {
+  const text = msg || "It's falsy!";
+  console.log(text);
+}
+
+falsyTest(); // It's falsy!
+falsyTest('Truthy!'); // good
+falsyTest(0); // It's falsy!
+falsyTest(-0); // It's falsy!
+falsyTest(null); // It's falsy!
+falsyTest(undefined); // It's falsy!
+falsyTest(''); // It's falsy!
