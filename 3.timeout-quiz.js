@@ -1,18 +1,16 @@
 // 주어진 seconds(초)가 지나면 callback 함수를 호출함
 // 단, seconds가 0보다 작으면 에러를 던지자!
 
-// function runInDelay(callback, seconds) {
-//     try {
-
-//     }
-// }
-
-function execute() {
-  console.log('1');
-  setTimeout(() => {
-    console.log('2');
-  }, 3000); // 3초 뒤에 실행
-  console.log('3');
+function runInDelay(callback, seconds) {
+  if (!callback) {
+    throw new Error('callback 함수를 전달해야 함');
+  }
+  if (!seconds || seconds < 0) {
+    throw new Error('seconds는 0보다 커 함!');
+  }
+  setTimeout(callback, seconds * 1000);
 }
 
-execute(); // 1
+runInDelay(() => {
+  console.log('타이머 완료!');
+}, 2);
